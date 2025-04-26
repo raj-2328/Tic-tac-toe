@@ -1,2 +1,3 @@
 # Tic-tac-toe
-Game
+Game <br>
+"This game is made using HTML, CSS, and JavaScript."
