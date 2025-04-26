@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./jvasscript.js">
+    <script src="./jvasscript.js"></script> -->
+</head>
+<body>
+   <!-- <div id="mesg">
+    <p id="message">winner</p>
+    <button id="newg">new game</button>
+   </div> -->                                                                                                                
+  <h3> Tic toe game</h3>   
+  <div id="mesg">
+    <p id="message">winner</p>
+    <button id="newg">new game</button>
+  </div>
+  <div>
+    <div class="container">
+        <div id="game">
+           <button class="box1"></button>
+           <button class="box1"></button>
+           <button class="box1"></button>
+           <button class="box1"></button>
+           <button class="box1"></button>
+           <button class="box1"></button>
+           <button class="box1"></button>
+           <button class="box1"></button>
+           <button class="box1"></button>
+     </div>
+     <div id="reset">
+      <button id="rbtn">Reset</button>
+     </div>
+   </div>
+    <script>
+    var boxer=document.querySelectorAll('.box1');
+    console.log(boxer);
+    let resetbtn=document.getElementById('rbtn');
+   // let box = document.querySelectorAll(".class");
+    let game=document.getElementById("game")
+    let newgamebtn=document.querySelector('#newg');
+    let msgcontainer=document.querySelector('#mesg');
+    let msg =document.querySelector('#message');
+
+    // let us to defined player
+    let turnO = true;
+
+   var winPatterns=[[0,1,2],[3,4,5],[6,7,8],
+                 [0,3,6],[1,4,7],[2,5,8],
+                 [0,4,8],[2,4,6]];
+        // reset game  addd new button
+        const resetgame =() => {
+          turnO = true;
+          enableboxes();
+          msgcontainer.style.display="none";
+        }
+        // to print the text on boxes
+        boxer.forEach((box1)=>{
+        box1.addEventListener("click",()=>{
+        if(turnO){
+          box1.innerText="X";
+          turnO=false;
+        }
+        else{
+          box1.innerText="O";
+          turnO=true;
+        }
+        box1.disabled=true;
+        checkWinner();
+      });
+    });
+        const disableboxes =() =>{
+      for(let box1 of boxer){
+        box1.disabled=true;
+      }
+     };
+     const enableboxes =() =>{
+      for(let box1 of boxer){
+        box1.disabled=false;
+        box1.innerText="";
+      }
+     } 
+     //  To show message of winner 
+     const showwinner = (winner) => {
+      msg.innerText='congratulation player winerr is='+(winner);
+      msgcontainer.style.display="block"
+        disableboxes();
+     };
+     //  check the condition winnwer
+
+   var checkWinner = () => {
+    for( let pattern of winPatterns){
+      // console.log( pattern[0],pattern[1],pattern[2]);
+      // console.log(boxer[pattern[0]].innerText,
+      // boxer[pattern[1]].innerText,
+      // boxer[pattern[2]].innerText);
+      let post1val1 =boxer[pattern[0]].innerText;
+      let post1val2 =boxer[pattern[1]].innerText;
+      let post1val3 =boxer[pattern[2]].innerText;
+      if(post1val1 != "" && post1val2 != "" && post1val3 !=""){
+        if(post1val1 === post1val2 && post1val2 === post1val3){
+          console.log("winner",post1val1);
+          //  box.disabled=true; 
+          showwinner(post1val1);
+        }
+      }
+    }
+  };
+
+   newgamebtn.addEventListener("click",resetgame);
+   resetbtn.addEventListener("click",resetgame);
+   </script>
+   </body>
+   </html>
