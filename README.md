@@ -1,5 +1,7 @@
 # Tic-tac-toe
-Game <br>  
+Game <br> 
+"The source code for this project is located in the master branch"
+
 using HTML, CSS, and JavaScript" – These are the core technologies of web development: <br>
 
 HTML (HyperText Markup Language): Structures the content (text, images, buttons).<br>
